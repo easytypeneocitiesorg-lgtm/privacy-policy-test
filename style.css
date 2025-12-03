@@ -42,6 +42,7 @@ button {
 
 #acceptBtn { background-color:#4caf50; color:white; }
 #privacyBtn { background-color:#2196f3; color:white; }
+#nextBtn { background-color:#ff69b4; color:white; }
 
 #usernameContainer, #surveyContainer {
   padding:50px;
