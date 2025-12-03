@@ -3,7 +3,7 @@ export default function handler(req, res) {
   res.status(200).send(`
 Privacy Policy
 
-Effective Date: [Insert Date]
+Effective Date: December 3, 2025
 
 This Privacy Policy (“Policy”) governs the collection, use, and dissemination of data through the use of this website (the “Site”). By accessing or using the Site, users (“You”) acknowledge and consent to the practices described herein.
 
