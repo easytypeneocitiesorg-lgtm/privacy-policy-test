@@ -1,24 +1,54 @@
 body {
-  margin: 0;
-  font-family: sans-serif;
+  margin:0;
+  font-family:sans-serif;
+  background:linear-gradient(135deg, #ff8cd8, #8cd8ff);
+  color:#fff;
+  text-align:center;
 }
 
 #overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position:fixed;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.8);
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 #popup {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 280px;
-  text-align: center;
+  background:#222;
+  padding:20px;
+  border-radius:10px;
+  width:300px;
+  text-align:center;
+  color:#fff;
+}
+
+#dontShow {
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-bottom:10px;
+  font-size:14px;
+}
+
+button {
+  margin:5px;
+  padding:8px 12px;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+#acceptBtn { background-color:#4caf50; color:white; }
+#privacyBtn { background-color:#2196f3; color:white; }
+
+#usernameContainer, #surveyContainer {
+  padding:50px;
+}
+
+.question {
+  margin-bottom:20px;
+  text-align:left;
+  display:inline-block;
 }
