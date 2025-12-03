@@ -1,26 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Vercel Site</title>
+  <title>Femboy Survey</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </head>
 <body>
 
+<!-- Popup / Accept -->
 <div id="overlay">
   <div id="popup">
     <h2>Notice</h2>
     <p>Data may be recorded while using this site.</p>
 
-    <!-- Don't show again toggle -->
     <label id="dontShow">
       <input type="checkbox" id="dontShowToggle">
       Don't show again
     </label>
 
-    <!-- Buttons -->
     <button id="acceptBtn">Accept</button>
     <button id="privacyBtn">Privacy Policy</button>
+  </div>
+</div>
+
+<!-- Username prompt -->
+<div id="usernameContainer" style="display:none;">
+  <h2>Enter your name or username</h2>
+  <input type="text" id="usernameInput" placeholder="Discord / site username">
+  <button id="usernameSubmit">Continue</button>
+</div>
+
+<!-- Survey Container -->
+<div id="surveyContainer" style="display:none;">
+  <h1>Femboy Survey</h1>
+
+  <form id="surveyForm">
+    <div class="question">
+      <p>1. How do you like to dress?</p>
+      <label><input type="radio" name="q1" value="cute"> Cute</label>
+      <label><input type="radio" name="q1" value="sexy"> Sexy</label>
+      <label><input type="radio" name="q1" value="chill"> Chill</label>
+    </div>
+
+    <div class="question">
+      <p>2. How do you act around friends?</p>
+      <label><input type="radio" name="q2" value="flirty"> Flirty</label>
+      <label><input type="radio" name="q2" value="shy"> Shy</label>
+      <label><input type="radio" name="q2" value="bold"> Bold</label>
+    </div>
+
+    <div class="question">
+      <p>3. Favorite color?</p>
+      <label><input type="radio" name="q3" value="red"> Red</label>
+      <label><input type="radio" name="q3" value="orange"> Orange</label>
+      <label><input type="radio" name="q3" value="yellow"> Yellow</label>
+      <label><input type="radio" name="q3" value="green"> Green</label>
+      <label><input type="radio" name="q3" value="blue"> Blue</label>
+      <label><input type="radio" name="q3" value="lightblue"> Light Blue</label>
+      <label><input type="radio" name="q3" value="indigo"> Indigo</label>
+      <label><input type="radio" name="q3" value="violet"> Violet</label>
+      <label><input type="radio" name="q3" value="pink"> Pink</label>
+      <label><input type="radio" name="q3" value="black"> Black</label>
+      <label><input type="radio" name="q3" value="white"> White</label>
+      <label><input type="radio" name="q3" value="purple"> Purple</label>
+    </div>
+
+    <div class="question">
+      <p>4. Favorite accessory?</p>
+      <label><input type="radio" name="q4" value="bows"> Bows</label>
+      <label><input type="radio" name="q4" value="chains"> Chains</label>
+      <label><input type="radio" name="q4" value="necklaces"> Necklaces</label>
+    </div>
+
+    <div class="question">
+      <p>5. Personality type?</p>
+      <label><input type="radio" name="q5" value="sweet"> Sweet</label>
+      <label><input type="radio" name="q5" value="flirty"> Flirty</label>
+      <label><input type="radio" name="q5" value="mischievous"> Mischievous</label>
+    </div>
+
+    <div class="question">
+      <p>6. Favorite hobby?</p>
+      <label><input type="radio" name="q6" value="gaming"> Gaming</label>
+      <label><input type="radio" name="q6" value="drawing"> Drawing</label>
+      <label><input type="radio" name="q6" value="dancing"> Dancing</label>
+    </div>
+
+    <div class="question">
+      <p>7. Ideal date type?</p>
+      <label><input type="radio" name="q7" value="cute_cafe"> Cute Cafe</label>
+      <label><input type="radio" name="q7" value="movie"> Movie</label>
+      <label><input type="radio" name="q7" value="adventure"> Adventure</label>
+    </div>
+
+    <div class="question">
+      <p>8. Favorite hairstyle?</p>
+      <label><input type="radio" name="q8" value="long"> Long Hair</label>
+      <label><input type="radio" name="q8" value="short"> Short Hair</label>
+      <label><input type="radio" name="q8" value="dyed"> Dyed Hair</label>
+    </div>
+
+    <div class="question">
+      <p>9. Preferred outfit style?</p>
+      <label><input type="radio" name="q9" value="casual"> Casual</label>
+      <label><input type="radio" name="q9" value="cute"> Cute</label>
+      <label><input type="radio" name="q9" value="sexy"> Sexy</label>
+    </div>
+
+    <div class="question">
+      <p>10. How do you express affection?</p>
+      <label><input type="radio" name="q10" value="hugs"> Hugs</label>
+      <label><input type="radio" name="q10" value="flirty_talk"> Flirty Talk</label>
+      <label><input type="radio" name="q10" value="playful"> Playful Gestures</label>
+    </div>
+
+    <button type="submit">Submit Survey</button>
+  </form>
+
+  <div id="results" style="display:none;">
+    <h2>Your Results</h2>
+    <p id="usernameResult"></p>
+    <p id="sexualityResult"></p>
+    <p id="softnessResult"></p>
+    <p id="horninessResult"></p>
   </div>
 </div>
 
