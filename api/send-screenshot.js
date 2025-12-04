@@ -1,27 +1,34 @@
-import formidable from "formidable";
-import fs from "fs";
-import fetch from "node-fetch";
+export const config = {
+  api: {
+    bodyParser: false, // disable default parser to handle raw data
+  },
+};
 
-export const config = { api: { bodyParser: false } };
+export default async function handler(req, res) {
+  if (req.method !== "POST") return res.status(405).send("Method not allowed");
 
-export default async function handler(req,res){
-  if(req.method!=="POST") return res.status(405).send("Method not allowed");
+  const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+  if (!webhookUrl) return res.status(500).send("Webhook not configured");
 
-  const form = new formidable.IncomingForm();
-  form.parse(req, async(err, fields, files)=>{
-    if(err) return res.status(500).send(err);
+  try {
+    // Read raw data from request
+    const chunks = [];
+    for await (const chunk of req) {
+      chunks.push(chunk);
+    }
+    const rawData = Buffer.concat(chunks);
 
-    const filePath = files.file.filepath;
-    const fileData = fs.readFileSync(filePath);
-    const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
-    if(!webhookUrl) return res.status(500).send("Webhook not configured");
+    // Send to Discord as file
+    const formData = new FormData();
+    formData.append("file", new Blob([rawData]), "result.png");
 
-    await fetch(webhookUrl,{
-      method:"POST",
-      headers:{},
-      body:fileData
+    await fetch(webhookUrl, {
+      method: "POST",
+      body: formData,
     });
 
-    res.status(200).send("Result image sent");
-  });
+    return res.status(200).send("Image sent to Discord");
+  } catch (err) {
+    return res.status(500).send("Error sending image: " + err.message);
+  }
 }
