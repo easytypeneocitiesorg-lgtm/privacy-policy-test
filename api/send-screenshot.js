@@ -2,9 +2,7 @@ import formidable from "formidable";
 import fs from "fs";
 import fetch from "node-fetch";
 
-export const config = {
-  api: { bodyParser: false },
-};
+export const config = { api: { bodyParser: false } };
 
 export default async function handler(req,res){
   if(req.method!=="POST") return res.status(405).send("Method not allowed");
@@ -24,6 +22,6 @@ export default async function handler(req,res){
       body:fileData
     });
 
-    res.status(200).send("Screenshot sent");
+    res.status(200).send("Result image sent");
   });
 }
